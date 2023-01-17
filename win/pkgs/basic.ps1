@@ -42,8 +42,6 @@ Invoke-Elevated {
     choco install keepassxc -y
     # chrome
     choco install googlechrome -y
-    # rclone & winfsp
-    choco install rclone winfsp -y
     # powertoys
     choco install powertoys -y
     # windows terminal
