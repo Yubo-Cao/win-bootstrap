@@ -31,7 +31,6 @@ Request-Continue
 C:\Users\yubo\scoop\apps\hibit-uninstaller\current\HiBitUninstaller-Portable.exe
 # snipaste
 scoop install snipaste-beta
-scoop install 
 
 # choco installs
 Invoke-Elevated {
