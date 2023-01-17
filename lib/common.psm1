@@ -19,7 +19,7 @@ function Get-File($url, $filename = "") {
 }
 
 function Get-Secret($name) {
-    return Get-Item $PSScriptRoot\..\..\secret\$name
+    return Get-Item $PSScriptRoot\..\secret\$name
 }
 
 function Get-Passwords() {

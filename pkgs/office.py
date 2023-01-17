@@ -1,5 +1,4 @@
 import asyncio
-from json import loads
 
 from common import DOWNLOAD_DIR, load_config, run
 from playwright.async_api import Download, Page, async_playwright
