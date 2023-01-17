@@ -66,3 +66,6 @@ python office.py
 
 # freefilesync
 python freefilesync.py
+
+# fonts
+scoop install FiraCode

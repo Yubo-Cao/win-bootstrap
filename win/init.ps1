@@ -17,6 +17,7 @@ git config --global user.name 'Yubo-Cao'
 git config --global user.email 'cao2006721@gmail.com'
 scoop bucket add extras
 scoop bucket add versions
+scoop bucket add nerd-fonts
 
 # bootstrap newer version of powershell
 scoop install pwsh
