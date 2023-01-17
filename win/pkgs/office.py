@@ -1,10 +1,8 @@
 import asyncio
 from json import loads
-from pathlib import Path
 
-from playwright.async_api import Page, async_playwright, Download
-
-ROOT = Path(__file__).resolve().parent.parent
+from common import DOWNLOAD_DIR, load_config, run
+from playwright.async_api import Download, Page, async_playwright
 
 
 async def login(page: Page) -> None:
@@ -22,10 +20,6 @@ async def login(page: Page) -> None:
     ):
         await control.fill(content)
     await page.get_by_placeholder("PASSWORD").press("Enter")
-
-
-def load_config() -> dict[str, any]:
-    return loads((ROOT / "secret" / "passwords.json").read_text(encoding="utf-8"))
 
 
 async def download_offce(page: Page) -> Download:
@@ -53,21 +47,9 @@ async def main():
         page = await browser.new_page()
         await login(page)
         download = await download_offce(page)
-        target = ROOT / "downloads" / "office.exe"
-        target.parent.mkdir(parents=True, exist_ok=True)
+        target = DOWNLOAD_DIR / "office.exe"
         await download.save_as(target)
-        try:
-            # it will needs admin, so it will throw but still run
-            await asyncio.create_subprocess_shell(
-                str(target),
-                cwd=target.parent,
-                stdout=asyncio.subprocess.PIPE,
-                stderr=asyncio.subprocess.PIPE,
-            )
-        except Exception as e:
-            print(e)
-        finally:
-            await browser.close()
+        await run(target)
 
 
 asyncio.run(main())

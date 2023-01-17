@@ -1,4 +1,4 @@
-Import-Module $PSScriptRoot\lib\common.psm1
+Import-Module $PSScriptRoot\..\lib\common.psm1
 
 # install 7zip
 scoop install 7zip
@@ -55,12 +55,14 @@ Invoke-Elevated {
 }
 
 # lockdown browser
-New-Item ..\downloads -ErrorAction SilentlyContinue 
-Invoke-WebRequest -Uri "https://downloads.respondus.com/OEM/LockDownBrowserOEMSetup.exe" -OutFile "..\downloads\lockdown.exe"
-Invoke-Expression -Command "..\downloads\lockdown.exe"
+$installer = Get-File "https://downloads.respondus.com/OEM/LockDownBrowserOEMSetup.exe"
+Invoke-Expression -Command $installer
 Write-Output "Go through the lockdown browser installation"
 Request-Continue
-Remove-Item "lockdown.exe"
+Remove-Item $installer
 
 # office
 python office.py
+
+# freefilesync
+python freefilesync.py

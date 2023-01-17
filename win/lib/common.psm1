@@ -14,7 +14,17 @@ function Invoke-Elevated($scriptblock) {
 
 function Request-Continue() {
     Write-Host -NoNewLine 'Press any key to continue...'
-$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
+    $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
+}
+
+function Get-File($url, $filename = "") {
+    New-Item ..\..\downloads -ErrorAction SilentlyContinue 
+    if ($filename -eq "") {
+        $filename = $url.Split("/")[-1]
+    }
+    $target = "..\..\downloads\$filename"
+    Invoke-WebRequest -Uri $url -OutFile $target # download directory
+    return $target
 }
 
 Export-ModuleMember -Function Request-Admin
