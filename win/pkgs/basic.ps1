@@ -50,6 +50,8 @@ Invoke-Elevated {
     choco install microsoft-windows-terminal --pre -y
     # vmware
     choco install vmwareworkstation -y
+    # zotero/citiation
+    choco install zotero -y
     # exit
     exit
 }
