@@ -25,8 +25,13 @@ scoop install adb
 scoop install hibit-uninstaller
 # let's uninstall edge and onedrive
 Write-Output "Please uninstall edge and onedrive"
+Request-Continue
 C:\Users\yubo\scoop\apps\hibit-uninstaller\current\HiBitUninstaller-Portable.exe
+# snipaste
+scoop install snipaste-beta
+scoop install 
 
+# choco installs
 Invoke-Elevated {
     # install vscode
     choco install vscode -y
@@ -34,10 +39,23 @@ Invoke-Elevated {
     choco install androidstudio -y
     # keepass xc
     choco install keepassxc -y
-    # rclone
-    choco install rclone -y
     # chrome
     choco install googlechrome -y
+    # rclone & winfsp
+    choco install rclone winfsp -y
+    # powertoys
+    choco install powertoys -y
+    # windows terminal
+    choco install microsoft-windows-terminal --pre -y
+    # vmware
+    choco install vmwareworkstation -y
     # exit
     exit
 }
+
+# lockdown browser
+Invoke-WebRequest -Uri "https://downloads.respondus.com/OEM/LockDownBrowserOEMSetup.exe" -OutFile "lockdown.exe"
+Invoke-Expression -Command ".\lockdown.exe"
+Write-Output "Go through the lockdown browser installation"
+Request-Continue
+Remove-Item "lockdown.exe"

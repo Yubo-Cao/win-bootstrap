@@ -12,5 +12,10 @@ function Invoke-Elevated($scriptblock) {
     $sh.ShellExecute('powershell', "-NoExit -Command $scriptblock", '', 'runas')
 }
 
+function Request-Continue() {
+    Write-Host -NoNewLine 'Press any key to continue...'
+$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
+}
+
 Export-ModuleMember -Function Request-Admin
 Export-ModuleMember -Function Invoke-Elevated
