@@ -56,8 +56,8 @@ Invoke-Elevated {
 }
 
 # lockdown browser
-Invoke-WebRequest -Uri "https://downloads.respondus.com/OEM/LockDownBrowserOEMSetup.exe" -OutFile "lockdown.exe"
-Invoke-Expression -Command ".\lockdown.exe"
+Invoke-WebRequest -Uri "https://downloads.respondus.com/OEM/LockDownBrowserOEMSetup.exe" -OutFile "..\downloads\lockdown.exe"
+Invoke-Expression -Command "..\downloads\lockdown.exe"
 Write-Output "Go through the lockdown browser installation"
 Request-Continue
 Remove-Item "lockdown.exe"
