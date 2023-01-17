@@ -2,7 +2,7 @@ import asyncio
 from json import loads as _loads
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent.parent
 DOWNLOAD_DIR = ROOT / "downloads"
 DOWNLOAD_DIR.mkdir(exist_ok=True, parents=True)
 
