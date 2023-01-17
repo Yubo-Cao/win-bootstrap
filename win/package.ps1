@@ -19,6 +19,8 @@ pip install --upgrade pip # update pip
 pip install --upgrade wheel # build deps
 pip install --upgrade black pygments # formatter and latex code block
 pip install --upgrade jupyterlab notebook # jupyter
+pip install --upgrade playwright # playwright/web automatically
+playwright install
 # install adb
 scoop install adb
 # install hibit uninstaller
@@ -59,3 +61,6 @@ Invoke-Expression -Command ".\lockdown.exe"
 Write-Output "Go through the lockdown browser installation"
 Request-Continue
 Remove-Item "lockdown.exe"
+
+# office
+python office.py
