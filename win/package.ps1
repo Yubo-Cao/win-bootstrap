@@ -56,6 +56,7 @@ Invoke-Elevated {
 }
 
 # lockdown browser
+New-Item ..\downloads -ErrorAction SilentlyContinue 
 Invoke-WebRequest -Uri "https://downloads.respondus.com/OEM/LockDownBrowserOEMSetup.exe" -OutFile "..\downloads\lockdown.exe"
 Invoke-Expression -Command "..\downloads\lockdown.exe"
 Write-Output "Go through the lockdown browser installation"
