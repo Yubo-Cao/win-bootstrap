@@ -8,9 +8,6 @@ scoop install nssm
 scoop install nodejs
 # install jdk
 scoop install openjdk
-# install tectonic and tex
-scoop install perl
-scoop install tectonic miktex latexindent
 # install python
 scoop install pyenv
 pyenv install 3.11.0b4 # latest version
@@ -47,7 +44,7 @@ Invoke-Elevated {
     # powertoys
     choco install powertoys -y
     # windows terminal
-    choco install microsoft-windows-terminal --pre -y
+    choco install microsoft-windows-terminal -y
     # vmware
     choco install vmwareworkstation -y
     # zotero/citiation
@@ -71,3 +68,4 @@ python freefilesync.py
 
 # fonts
 scoop install FiraCode
+scoop install FiraCode-NF
