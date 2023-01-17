@@ -11,13 +11,11 @@ Invoke-Elevated {
 
 # install scoop
 Invoke-RestMethod get.scoop.sh | Invoke-Expression
-# add extras
+# add buckets
 scoop install git
 git config --global user.name 'Yubo-Cao'
 git config --global user.email 'cao2006721@gmail.com'
+
 scoop bucket add extras
 scoop bucket add versions
 scoop bucket add nerd-fonts
-
-# bootstrap newer version of powershell
-scoop install pwsh
