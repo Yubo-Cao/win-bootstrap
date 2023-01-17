@@ -1,12 +1,3 @@
-function Request-Admin() {
-    # https://stackoverflow.com/questions/7690994/running-a-command-as-administrator-using-powershell
-    if (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {  
-        $arguments = "& '" + $myinvocation.mycommand.definition + "'"
-        Start-Process powershell -Verb runAs -ArgumentList $arguments
-        Break
-    }
-}
-
 function Invoke-Elevated($scriptblock) {
     $sh = new-object -com 'Shell.Application'
     $sh.ShellExecute('powershell', "-NoExit -Command $scriptblock", '', 'runas')
@@ -27,5 +18,16 @@ function Get-File($url, $filename = "") {
     return $target
 }
 
-Export-ModuleMember -Function Request-Admin
+function Get-Secret($name) {
+    return Get-Item $PSScriptRoot\..\..\secret\$name
+}
+
+function Get-Passwords() {
+    return Get-Secret "passwords.json" | Get-Content -Raw | ConvertFrom-Json
+}
+
 Export-ModuleMember -Function Invoke-Elevated
+Export-ModuleMember -Function Request-Continue
+Export-ModuleMember -Function Get-File
+Export-ModuleMember -Function Get-Secret
+Export-ModuleMember -Function Get-Passwords

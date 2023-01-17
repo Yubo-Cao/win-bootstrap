@@ -2,6 +2,8 @@ Import-Module $PSScriptRoot\..\lib\common.psm1
 
 # install 7zip
 scoop install 7zip
+# install non-sucking service manager
+scoop install nssm
 # install nodejs
 scoop install nodejs
 # install jdk
