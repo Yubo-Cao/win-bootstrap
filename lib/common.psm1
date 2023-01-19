@@ -1,6 +1,6 @@
 function Invoke-Elevated($scriptblock) {
-    $sh = new-object -com 'Shell.Application'
-    $sh.ShellExecute('powershell', "-NoExit -Command $scriptblock", '', 'runas')
+    Start-Process powershell.exe -Verb RunAs -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"$scriptblock`""`
+        -Wait -WindowStyle Hidden
 }
 
 function Request-Continue() {
@@ -13,7 +13,7 @@ function Get-File($url, $filename = "") {
     if ($filename -eq "") {
         $filename = $url.Split("/")[-1]
     }
-    $target = "..\..\downloads\$filename"
+    $target = "..\downloads\$filename"
     Invoke-WebRequest -Uri $url -OutFile $target # download directory
     return $target
 }
