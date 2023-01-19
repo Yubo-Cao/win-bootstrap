@@ -232,17 +232,12 @@
 % science --- cs/code
 % ------------------------------
 \ifcode
-	\ifXeTeX
-		\RequirePackage{fontspec}
-		\setmonofont{Fira Code} % Ligatures=TeX,Contextuals=Alternate
-	\fi
-
+	% \usepackage[outputdir=build]{minted}
 	\usepackage{minted}
 	\usepackage{currfile-abspath}
 	\getabspath{\jobname.log}
 	\ifthenelse{\equal{\theabsdir}{\thepwd}}
 	{}{\PassOptionsToPackage{outputdir=\theabsdir}{minted}}
-
 	\renewenvironment{minted@colorbg}[1]{
 		\setlength{\fboxsep}{\z@}
 		\def\minted@bgcol{#1}
@@ -255,7 +250,6 @@
 		\colorbox{\minted@bgcol}{\usebox{\minted@bgbox}}\vspace{1em}}
 
 	\definecolor{bg}{HTML}{2e3440} % #2e3440
-	\usemintedstyle{nord}
 	\renewcommand{\theFancyVerbLine}{\ttfamily
 		\textcolor{sky-500}{\oldstylenums{\arabic{FancyVerbLine}}}}
 	\setminted{linenos,
