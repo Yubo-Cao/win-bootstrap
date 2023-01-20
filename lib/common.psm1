@@ -26,8 +26,13 @@ function Get-Passwords() {
     return Get-Secret "passwords.json" | Get-Content -Raw | ConvertFrom-Json
 }
 
+function Get-Root() {
+    return 'C:\Users\yubo\Documents\projects\config\'
+}
+
 Export-ModuleMember -Function Invoke-Elevated
 Export-ModuleMember -Function Request-Continue
 Export-ModuleMember -Function Get-File
 Export-ModuleMember -Function Get-Secret
 Export-ModuleMember -Function Get-Passwords
+Export-ModuleMember -Function Get-Root
