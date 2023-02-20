@@ -62,3 +62,6 @@ function Install-RcloneService($src, $dst = "$home\Documents\mount\$src") {
 
 # start service
 Install-RcloneService "personal"
+
+# wait
+Request-Continue

@@ -52,7 +52,7 @@
 \DeclareOptionX{numberedAnswer}[true]{\@booloption{#1}{numberedAnswer}}
 \DeclareOptionX{coloredQuestion}[true]{\@booloption{#1}{coloredQuestion}}
 \DeclareOptionX{coloredAnswer}[true]{\@booloption{#1}{coloredAnswer}}
-\DeclareOptionX{pl}{\def\defaultPL{#1}} \def\defaultPL{python}
+\DeclareOptionX{pl}{\def\pl{#1}} \def\pl{python}
 \DeclareOptionX{linespace}{\def\linespace{#1}} \def\linespace{1.15}
 \ProcessOptionsX
 
@@ -195,7 +195,7 @@
 \setbool{@clipicon}{true}
 
 % predefined icon
-\def\@icondirectory{C:/Users/Cao20/.config/tex/common/icon}
+\def\@icondirectory{C:/Users/yubo/Documents/projects/config/pkgs/tex/texmf/tex/latex/common/icon}
 \def\@icon@anish{anish.png}
 \def\@icon@yubo{yubo.png}
 \def\@icon@texnician{texnician.png}
@@ -232,12 +232,7 @@
 % science --- cs/code
 % ------------------------------
 \ifcode
-	% \usepackage[outputdir=build]{minted}
-	\usepackage{minted}
-	\usepackage{currfile-abspath}
-	\getabspath{\jobname.log}
-	\ifthenelse{\equal{\theabsdir}{\thepwd}}
-	{}{\PassOptionsToPackage{outputdir=\theabsdir}{minted}}
+	\usepackage[outputdir=build]{minted}
 	\renewenvironment{minted@colorbg}[1]{
 		\setlength{\fboxsep}{\z@}
 		\def\minted@bgcol{#1}
@@ -263,9 +258,9 @@
 		xleftmargin=1em,
 		xrightmargin=1em,
 		numbersep=2em}
-	\newmintinline[mono]{\defaultPL}{}
-	\newminted[monos]{\defaultPL}{}
-	\RequirePackage[ruled]{algorithm2e}
+	\newmintinline[mono]{c}{}
+	\newminted[monos]{c}{}
+	% \RequirePackage[ruled]{algorithm2e}
 	\iftable%
 		\newcolumntype{C}{>{\ttfamily\arraybackslash}p}
 	\fi
@@ -363,7 +358,7 @@
 		}
 
 		\ifthenelse{\equal{\q@boxed}{true}}{
-			\begin{tcolorbox}[enhanced, breakable, sharp corners,boxrule=0.4pt,colback=background,colframe=theme-2,colbacktitle=theme-2,fonttitle=\bfseries\@autoTextColor{theme-2},title=\q@t]
+			\begin{tcolorbox}[enhanced, breakable, sharp corners,boxrule=0.4pt,colback=background,colframe=primary,colbacktitle=sky-50,fonttitle=\bfseries\@autoTextColor{primary},title=\q@t]
 				}{ \q@t }
 				}{
 				\ifthenelse{\equal{\q@boxed}{true}}{ \end{tcolorbox} }{}
@@ -380,7 +375,7 @@
 		}
 
 		\ifthenelse{\equal{\a@boxed}{true}}{
-			\begin{tcolorbox}[enhanced, breakable, sharp corners,boxrule=0.4pt,colback=background,colframe=theme-4,colbacktitle=theme-4,fonttitle=\bfseries\@autoTextColor{theme-4},title=\a@t]
+			\begin{tcolorbox}[enhanced, breakable, sharp corners,boxrule=0.4pt,colback=background,colframe=secondary,colbacktitle=indigo-50,fonttitle=\bfseries\@autoTextColor{secondary},title=\a@t]
 				}{ \a@t }
 				}{
 				\ifthenelse{\equal{\a@boxed}{true}}{ \end{tcolorbox} }{}
