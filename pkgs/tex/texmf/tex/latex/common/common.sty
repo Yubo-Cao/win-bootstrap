@@ -380,6 +380,11 @@
 				}{
 				\ifthenelse{\equal{\a@boxed}{true}}{ \end{tcolorbox} }{}
 	}
+	\NewDocumentCommand{\resetQuestion}{}
+	{
+		\setcounter{question}{0}
+		\setcounter{answer}{0}
+	}
 \fi
 
 % ------------------------------
